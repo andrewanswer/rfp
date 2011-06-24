@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:controller="ca.johannes.fontPublisher.controller.*"
+			   xmlns:model="ca.johannes.fontPublisher.model.*"
+			   pageTitle="Runtime Font Publisher" width="100%" height="100%" >
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<fx:Style source="/styles/CS5.css"/>
+	<fx:Declarations>
+		<model:FontPublisherModel id="model"/>
+		<controller:FontPublisherController id="controller" fontWindow="{this}" fontPublisher="{model}"/>
+	</fx:Declarations>
+	
+	<s:Scroller width="100%" height="{this.height}" horizontalScrollPolicy="off" verticalScrollPolicy="auto">
+		<s:Group>
+			<mx:Grid id="grid" width="100%" horizontalGap="5" verticalGap="5" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+				<mx:GridRow width="100%" >
+					<mx:GridItem width="85" minWidth="85" maxWidth="85"  horizontalAlign="right">
+						<s:Label id="fontLabel" text="Font name:" styleName="label"/>
+					</mx:GridItem>
+					<mx:GridItem width="100%" >
+						<s:TextInput id="fontName" displayAsPassword="false" editable="true" enabled="true" height="18" width="100%" />
+						<s:Button label="New" id="newFont" height="18" width="80" />
+					</mx:GridItem>
+					<mx:GridItem width="15" minWidth="15" maxWidth="15" />
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="fileLabel" text="Font file:" styleName="label"/>
+					</mx:GridItem>
+					<mx:GridItem width="100%" >	
+						<s:TextInput id="sourceFont" displayAsPassword="false" editable="true" enabled="true" height="18" width="100%" />
+						<s:Button label="Browse..." id="sourceSelect" height="18" width="80" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+					</mx:GridItem>
+					<mx:GridItem width="100%" >	
+						<s:TextArea id="fileInfo" width="100%" editable="false" height="50" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="styleLabel" text="Style:" styleName="label"/>
+					</mx:GridItem>
+					<mx:GridItem width="100%" >
+						<s:DropDownList id='fontSubfamilies' dataProvider="{model.fontSubfamilies}" requireSelection="true" height="18" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem/>			
+					<mx:GridItem width="100%" >
+						<s:CheckBox id="uHexNotation" label="U+hex notation (no validation)" enabled="true" selected="false" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="charactersLabel" text="Characters:" styleName="label"/>				
+					</mx:GridItem>
+					<mx:GridItem width="100%" >
+						<s:TextInput id="embeddedCharacters" editable="true" enabled="true" displayAsPassword="false" height="18" width="100%" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="rangesLabel" text="Ranges:" styleName="label"/>				
+					</mx:GridItem>
+					<mx:GridItem width="100%" >			
+						<s:List id="embeddedRanges" enabled="true" allowMultipleSelection="true" dataProvider="{model.unicodeRanges}" labelField="@name" height="75" width="100%" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="advancedLabel" text="Advanced:" styleName="label"/>
+					</mx:GridItem>
+					<mx:GridItem width="100%" >
+						<s:CheckBox id="aaa" label="Advanced Anti-aliasing" enabled="true" selected="false"/>
+						<s:CheckBox id="cff" label="Compact Font Format" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%"  >
+					<mx:GridItem/>
+					<mx:GridItem width="100%" styleName="addRemove" >
+						<s:Button  id="addFont" enabled="{model.fontReady}" width="18" height="18" styleName="addButton"/>
+						<s:Button id="removeFont" enabled="{controller.removeReady}" width="18" height="18" styleName="removeButton"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="listLabel" text="Fonts:" styleName="label"/>
+					</mx:GridItem>
+					<mx:GridItem width="100%" >
+						<s:List id="fontList" enabled="true" width="100%" height="75" dataProvider="{model.fontProfiles}" labelField="fontName" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="fileNameLabel" text="File name:" styleName="label"/>
+					</mx:GridItem>
+					<mx:GridItem width="100%">
+						<s:TextInput id="fileName" displayAsPassword="false" editable="true" enabled="true" width="100%"  height="18" text="{model.fileName}" />
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem horizontalAlign="right">
+						<s:Label id="outputLabel" text="Output folder:" styleName="label"/>
+					</mx:GridItem>
+					<mx:GridItem width="100%">
+						<s:TextInput id="output" displayAsPassword="false" editable="true" enabled="true" width="100%"  height="18" />
+						<s:Button label="Browse..." id="outputSelect" height="18" width="80"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem colSpan="3" width="100%" >
+						<mx:HRule width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem/>
+					<mx:GridItem width="100%">
+						<s:Button label="Publish font SWF" id="publish" enabled="{model.publishReady}" height="18"/>
+						<s:Button label="Export ActionScript" id="export" enabled="{model.publishReady}" height="18"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%">
+					<mx:GridItem/>
+					<mx:GridItem width="100%">
+						<s:Label id="copyright" text="Version 1.0.1 by Andrew Answer http://answe.ru" styleName="label"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</s:Group>
+	</s:Scroller>
+</s:Application>

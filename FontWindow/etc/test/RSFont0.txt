@@ -1,0 +1,42 @@
+package
+{
+	import flash.text.Font;
+	import flash.text.FontType;
+	import flash.text.FontStyle;
+                    
+	public class RSFont0 extends Font
+	{	
+		[Embed(source = 'c:/font.ttf',
+			   fontName = 'My Font',			   
+			   fontWeight = 'regular',
+			   fontStyle = 'regular',
+			   unicodeRange = 'U+0061, U+0062, U+0063',
+			   advancedAntiAliasing = 'false',
+			   embedAsCFF = 'false',			   
+			   mimeType = 'application/x-font-truetype')]
+		private static var _font:Class;
+		private var _fontName:String = 'My Font';
+		private var _fontStyle:String = 'regular';
+		private var _fontType:String = 'embedded';
+		
+		public static function get font():Class
+		{
+			return _font;
+		}
+		
+		override public function get fontName():String 
+		{
+			return _fontName;
+		}
+		
+		override public function get fontStyle():String 
+		{
+			return _fontStyle;
+		}
+		
+		override public function get fontType():String 
+		{
+			return _fontType;
+		}
+	}
+}

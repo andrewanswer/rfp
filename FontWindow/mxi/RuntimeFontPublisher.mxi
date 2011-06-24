@@ -1,0 +1,31 @@
+<macromedia-extension type="flashpanel" version="1.0.1" requires-restart="true" name="Runtime Font Publisher">
+	<author name="Andrew Answer" />
+	<products>
+		<product name="Flash" version="11" primary="true" />
+	</products>
+	<description>
+		<![CDATA[This extension installs the Runtime Font Publisher for Flash CS5.]]>
+	</description>
+	<update url="http://code.google.com/p/flash-runtime-font-publisher/" method="directlink"/>
+	<license-agreement>
+		<![CDATA[
+		Runtime Font Publisher for Flash CS5 Copyright (c) 2010 Johannes Tacskovics, 2011 Andrew Answer <br/>
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+		The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br/>
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br/>
+		Updated by Andrew Answer
+		http://answe.ru
+		Based on Johannes Tacskovics code
+		http://blog.johannest.com/
+		http://code.google.com/p/flash-runtime-font-publisher/
+		johannes.tacskovics@gmail.com
+		]]>
+	</license-agreement>
+	<ui-access>
+		<![CDATA[Access the Runtime Font Publisher selecting Window > Other Panels > Runtime Font Publisher]]>
+	</ui-access>
+	<files>
+		<file source="Runtime Font Publisher.swf" destination="$Flash\WindowSWF" />
+		<file source="RSFont.fla" destination="$Flash\RSFontPublisher\fla" />
+	</files>
+</macromedia-extension>

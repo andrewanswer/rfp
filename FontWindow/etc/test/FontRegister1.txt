@@ -1,0 +1,24 @@
+package {
+	import flash.display.Sprite;
+	import flash.text.Font;
+
+	public class FontRegister extends Sprite
+	{
+		private var _fonts:Array = [new RSFont0(), new RSFont1()];
+	
+		public function FontRegister()
+		{
+			registerFont(RSFont0.font); registerFont(RSFont1.font); 
+		}
+		
+		public function get fonts():Array
+		{
+			return _fonts;
+		}
+		
+		protected function registerFont(font:Class):void
+		{
+			Font.registerFont(font);
+		}
+	}
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is an auto generated file and is not intended for modification. -->
+
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
+			   creationComplete="onCreationComplete()">
+	<!--xmlns:flexui="flexunit.flexui.*"-->
+	<fx:Script>
+		<![CDATA[
+			import ca.johannes.fontPublisher.publish.FontProfileTest;
+			import ca.johannes.fontPublisher.model.FontPublisherTest;
+			import ca.johannes.fontPublisher.fileReader.FontReaderTest;
+			import ca.johannes.fontPublisher.fileReader.FontFileTest_TTF;
+			import ca.johannes.fontPublisher.fileReader.FontFileTest_OTF;
+			import ca.johannes.fontPublisher.commands.BuildFontRegisterTest;
+			import ca.johannes.fontPublisher.commands.BuildFontClassTest;
+			
+			public function currentRunTestSuite():Array
+			{
+				var testsToRun:Array = new Array();
+				testsToRun.push(ca.johannes.fontPublisher.commands.BuildFontClassTest);
+				testsToRun.push(ca.johannes.fontPublisher.commands.BuildFontRegisterTest);
+				testsToRun.push(ca.johannes.fontPublisher.fileReader.FontFileTest_OTF);
+				testsToRun.push(ca.johannes.fontPublisher.fileReader.FontFileTest_TTF);
+				testsToRun.push(ca.johannes.fontPublisher.fileReader.FontReaderTest);
+				testsToRun.push(ca.johannes.fontPublisher.model.FontPublisherTest);
+				testsToRun.push(ca.johannes.fontPublisher.publish.FontProfileTest);
+				return testsToRun;
+			}
+			
+			
+			private function onCreationComplete():void
+			{
+				//testRunner.runWithFlexUnit4Runner(currentRunTestSuite(), "FontWindow");
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<!--flexui:FlexUnitTestRunnerUI id="testRunner">
+	</flexui:FlexUnitTestRunnerUI-->
+</s:Application>

@@ -1,0 +1,79 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+global
+{
+	fontSize: 11;
+	fontFamily: Verdana;
+	letterSpacing: -1;
+	cornerRadius: 0;
+	color: #262626;
+	chromeColor: #BABABA;
+	borderColor: #818181;
+	focusedTextSelectionColor: #316AC5;
+}
+s|Application
+{
+	backgroundColor: #D6D6D6;
+}
+s|Button
+{
+	skinClass: ClassReference("skins.cs5.Button");
+	color: #4D4D4D;
+}
+s|DropDownList
+{
+	skinClass: ClassReference("skins.cs5.DropDownList");
+	color: #4D4D4D;
+}
+s|List
+{
+	skinClass: ClassReference("skins.cs5.List");
+	color: #4D4D4D;
+}
+s|TextArea
+{
+	skinClass: ClassReference("skins.cs5.TextArea");
+	color: #4D4D4D;
+	lineHeight: 14;
+}
+s|TextInput
+{
+	skinClass: ClassReference("skins.cs5.TextInput");
+	color: #707070;
+	paddingTop: 0px;
+	paddingBottom: 0px;
+}
+s|VScrollBar
+{
+	skinClass: ClassReference("skins.cs5.VScrollBar");
+}
+mx|Grid
+{
+	paddingTop: 10px;
+	paddingRight: 1px;
+	paddingBottom: 10px;
+	paddingLeft: 1px;
+}
+mx|HRule
+{
+	strokeColor: #ABABAB;
+	shadowColor: #DEDEDE;
+}
+.addButton
+{
+	skinClass: ClassReference("skins.cs5.AddButton");	
+}
+.removeButton
+{
+	skinClass: ClassReference("skins.cs5.RemoveButton");	
+}
+.addRemove
+{
+	horizontalGap: 5px;
+}
+.label
+{
+	paddingTop: 5px;	
+}

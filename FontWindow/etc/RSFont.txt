@@ -1,0 +1,42 @@
+package
+{
+	import flash.text.Font;
+	import flash.text.FontType;
+	import flash.text.FontStyle;
+                    
+	public class ${className} extends Font
+	{	
+		[Embed(${sourceFont}${systemFont}
+			   fontName = '${fontName}',			   
+			   fontWeight = '${fontWeight}',
+			   fontStyle = '${fontStyle}',
+			   unicodeRange = '${unicodeRange}',
+			   advancedAntiAliasing = '${advancedAntiAliasing}',
+			   embedAsCFF = '${cff}',			   
+			   mimeType = '${mimeType}')]
+		private static var _font:Class;
+		private var _fontName:String = '${fontName}';
+		private var _fontStyle:String = '${fontDecoration}';
+		private var _fontType:String = '${fontType}';
+		
+		public static function get font():Class
+		{
+			return _font;
+		}
+		
+		override public function get fontName():String 
+		{
+			return _fontName;
+		}
+		
+		override public function get fontStyle():String 
+		{
+			return _fontStyle;
+		}
+		
+		override public function get fontType():String 
+		{
+			return _fontType;
+		}
+	}
+}
