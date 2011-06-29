@@ -1,5 +1,4 @@
 ﻿package  {
-	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.system.LoaderContext;
@@ -8,42 +7,32 @@
 	import flash.system.ApplicationDomain;
 	import flash.net.URLRequest;
 	import flash.display.Loader;
+	import flash.text.AntiAliasType;
 	import flash.text.Font;
-	import flash.net.getClassByAlias;
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 
 	public class Engine extends Sprite {
-		private var _data:Object;
-		private var _isFontLoaded:Boolean;
-		private var _fontLoaderList:Array = new Array;
-		/*public function Engine() {
-			var loader:Loader = new Loader();
-			var request:URLRequest = new URLRequest('C:\\test_fonts\\arial_all2.swf');
-			loader.contentLoaderInfo.addEventListener(Event.INIT, onInit);
-			loader.load(request);
-		}*/
+		private static var dir:String = "fonts/";
 		public function Engine() {
-			if (stage) init();
-			else addEventListener(Event.ADDED_TO_STAGE, init);
+			var lc:LoadConfig = new LoadConfig(dir + "fonts.xml");
+			lc.addEventListener(LoadConfig.FONT_LOADED, init);
 		}
 		private function init(e:Event = null):void
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			loadFont("C:\\test\\fonts\\Verdana.swf");
-			loadFont("C:\\test\\fonts\\Arial.swf");
+			for each(var font:FontVO in LoadConfig.arrayFonts) {
+				loadFont(dir + font.file);
+			}
 		}
 		private function loadFont(url:String):void
 		{
-			var _fontLoader:Loader = new Loader();
-			_fontLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onFontLoad);
-			_fontLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onFontLoadError);
-			_fontLoaderList.push(_fontLoader);
-			trace(url,_fontLoaderList.length);
-
-			_fontLoader.load(new URLRequest(url),context);
+			var fontLoader:Loader = new Loader();
+			fontLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onFontLoad);
+			fontLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onFontLoadError);
+			trace(url);
+			fontLoader.load(new URLRequest(url),context);
 		}
 		public static function get context():LoaderContext
 		{
@@ -63,8 +52,7 @@
 		}
 		private function getFontLength():int
 		{
-			var fontList:Array = Font.enumerateFonts();
-			return fontList.length;
+			return Font.enumerateFonts().length;
 		}
 		private function getFontName(i:int):String
 		{
@@ -80,7 +68,7 @@
 		}
 		private var fields:Array = new Array;
 		private function show():void {
-			var i;
+			var i:int;
 			if (fields.length>0)
 				for(i=0;i<fields.length;i++)
 					removeChild(fields[i]);
@@ -92,7 +80,7 @@
 				//tf.height = 100;
 				tf.textColor = 0x000000;
 				tf.embedFonts = true;
-				tf.antiAliasType = flash.text.AntiAliasType.ADVANCED;
+				tf.antiAliasType = AntiAliasType.ADVANCED;
 				format.font = getFontName(i);
 				format.size = 15;
 				switch(getFontStyle(i)) {
@@ -128,7 +116,7 @@
 		}
 		private function onFontLoadError(e:IOErrorEvent):void 
 		{
-			trace('Шрифт не загрузился: ',  e.text);
+			trace('Font not loaded: '+e.text);
 		}
 	}
 }

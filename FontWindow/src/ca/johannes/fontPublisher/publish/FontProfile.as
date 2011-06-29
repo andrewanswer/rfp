@@ -121,6 +121,10 @@ package ca.johannes.fontPublisher.publish
 			setProperty("sourceFont", sourceFont, value);
 		}
 		
+		public function get fontClassName():String
+		{
+			return _fontName.replace(" ","_");
+		}
 		public function get fontName():String
 		{
 			return _fontName;

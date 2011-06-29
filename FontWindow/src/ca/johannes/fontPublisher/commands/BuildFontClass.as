@@ -12,7 +12,7 @@ package ca.johannes.fontPublisher.commands
 		[Embed(source="../../../../../etc/RSFont.txt", mimeType="application/octet-stream")]
 		protected static const FontClassTemplate:Class;
 		
-		protected static var FONT_CLASS_PREFIX:String = "RSFont";
+		//protected static var FONT_CLASS_PREFIX:String = "RSFont";
 		
 		protected var _fontClass:String;
 		
@@ -67,7 +67,7 @@ package ca.johannes.fontPublisher.commands
 			
 			_fontClass = (new FontClassTemplate()).toString();
 			//className = FONT_CLASS_PREFIX + index.toString();
-			className = fontProfile.fontName + index.toString();
+			className = fontProfile.fontClassName + index.toString();
 			var sourceFontParam:String;
 			var systemFontParam:String;
 			
@@ -108,8 +108,6 @@ package ca.johannes.fontPublisher.commands
 			_fontClass = _fontClass.replace(pattern = /\${advancedAntiAliasing}/g, fontProfile.advancedAntiAliasing);
 			_fontClass = _fontClass.replace(pattern = /\${mimeType}/g, fontProfile.mimeType);
 			_fontClass = _fontClass.replace(pattern = /\${cff}/g, fontProfile.cff);
-			
-			//_fontClass
 		}
 	}
 }

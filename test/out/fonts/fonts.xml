@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<font label="Arial" name="Arial" file="Arial.swf" icon="Arial.png"/>
+	<font label="GaramondPro" name="GaramondPro" file="GaramondPro.swf" icon="GaramondPro.png"/>
+	<font label="Georgia" name="Georgia" file="Georgia.swf" icon="Georgia.png"/>
+	<font label="Verdana" name="Verdana" file="Verdana.swf" icon="Verdana.png"/>
+</data>

@@ -14,7 +14,7 @@ package ca.johannes.fontPublisher.commands
 		[Embed(source="../../../../../etc/FontRegister.txt", mimeType="application/octet-stream")]
 		protected static const FontRegisterTemplate:Class;
 		
-		protected static var FONT_CLASS_PREFIX:String = "RSFont";
+		//protected static var FONT_CLASS_PREFIX:String = "RSFont";
 		
 		protected static var FONT_REGISTER_CLASS_NAME:String = "FontRegister";
 		
@@ -73,7 +73,7 @@ package ca.johannes.fontPublisher.commands
 			for (var i:int = 0; i<len; i++) {
 				var profile:FontProfile = fontProfiles.getItemAt(i) as FontProfile;
 				//var className:String = FONT_CLASS_PREFIX + i.toString();
-				var className:String = profile.fontName + i.toString();
+				var className:String = profile.fontClassName + i.toString();
 				registerConstructor += "registerFont(" + className + ".font); "; //+ ".font);\n"
 				registerFontArray += "new " + className + "()";
 				if (i != (len-1)){
@@ -91,7 +91,7 @@ package ca.johannes.fontPublisher.commands
 		{
 			// First font name used for extending FontRegister class name
 			var profile:FontProfile = fontProfiles.getItemAt(0) as FontProfile;
-			return FONT_REGISTER_CLASS_NAME + "_" + profile.fontName;
+			return FONT_REGISTER_CLASS_NAME + "_" + profile.fontClassName;
 		}
 	}
 }
